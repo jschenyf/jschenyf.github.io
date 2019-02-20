@@ -1,0 +1,99 @@
+  <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="page-header" id="archives">
+                            <h3 class="d-inline">文章</h3>
+                            <input type="text" class="d-inline form-control ml-3 w-50" id="post-search" placeholder="Press enter to search..." autocomplete="off">
+                        </div>
+                        <ul class="ant-timeline" id="archivelist">
+
+
+                            {% comment %} Stickie list {% endcomment %}
+                            {% for post in site.posts %}
+
+                            {% if post.stickie != true %}
+                            {% continue %}
+                            {% endif %}
+
+
+                            <li class="ant-timeline-item">
+                                <div class="ant-timeline-item-tail">
+                                </div>
+                                <!-- index start from 1 -->
+                                <div class="ant-timeline-item-head ant-timeline-item-head-blue">
+                                </div>
+                                <div class="ant-timeline-item-content">
+                                  <span class="badge badge-danger d-lg-inline-block d-none">{{ post.date | date: "%Y-%m-%d" }} </span>
+                                  <span class="align-items-center post-title">
+                                   <a class="post-link text-danger h6 text-danger font-weight-bold" href="{{site.url}}{{site.baseurl}}{{ post.url}}">{{ post.title }}</a>
+                                 </span>
+                              </div>
+                            </li>
+                            {% endfor %}
+
+
+                            {% comment %} Normal post list {% endcomment %}
+                            {% for post in site.posts %}
+
+                            {% comment %} If it already showed in stickie list {% endcomment %}
+                            {% if post.stickie == true %}
+                            {% continue %}
+                            {% endif %}
+
+                            <li class="ant-timeline-item">
+                                <div class="ant-timeline-item-tail">
+                                </div>
+                                <!-- index start from 1 -->
+                                <div class="ant-timeline-item-head ant-timeline-item-head-blue">
+                                </div>
+                                <div class="ant-timeline-item-content">
+                                  <span class="badge badge-primary d-lg-inline-block d-none">{{ post.date | date: "%Y-%m-%d" }} </span>
+                                  <span class="align-items-center post-title">
+                                    <a class="post-link h6 font-weight-bold" href="{{site.url}}{{site.baseurl}}{{ post.url}}">{{ post.title }}</a>
+                                  </span>
+                                </div>
+                              </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="page-header" id="archives">
+                            <h4>全部分类</h4>
+                        </div>
+                        <div id="cat-list" style="line-height:30px;">
+                            {% comment %} Normal categories list {% endcomment %}
+                            {% for cat in site.categories %} 
+                            <a href="/categories.html?cat={{ cat[0] }}" title="{{ cat[0] }}">
+                                <span class="badge badge-secondary">{{ cat[0] }}<sup>{{ cat[1].size }}</sup></span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                        <div class="page-header" id="archives">
+                            <h4>全部标签</h4>
+                        </div>
+                        <div id="tag-list" style="line-height:30px;">
+                            {% comment %} Normal tag list {% endcomment %}
+                            {% for tag in site.tags %}
+                            <a href="/categories.html?tag={{ tag[0] }}" title="{{ tag[0] }}">
+                              <span class="badge badge-secondary">#{{ tag[0] }}<sup>{{ tag[1].size }}</sup></span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                        <div class="page-header" id="archives">
+                            <h4>友情链接</h4>
+                        </div>
+                        <ul>
+                            <li><a href="https://evilcos.me/" target="_blank">余弦</a></li>
+                            <li><a href="https://zhuanlan.zhihu.com/taosay" target="_blank">道哥</a></li>
+                            <li><a href="https://imququ.com/" target="_blank">JerryQu</a></li>
+                        </ul>
+                        <div class="page-header" id="archives">
+                            <h4>经典语录</h4>
+                        </div>
+                        <p>现实会告诉你，不努力就会被生活给踩死。无需找什么借口，一无所有，就是拼的理由。</p>
+                    </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->

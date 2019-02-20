@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="comment"></div>
+    <!--Leancloud 操作库:-->
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!--Valine 的核心代码库-->
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+        new Valine({
+            av: AV, 
+            el: '.comment',
+            app_id: 'C2p1B0dI4GnQk9IpKNjsOjCC-gzGzoHsz', // 这里填写Leancloud得到的APP ID
+            app_key: '5MND1JiaQ6yAla6e32KRVWIn', // 这里填写Leancloud得到的APP KEY
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!', // 留言框占位提示文字
+        });
+    </script>
+    </div>
+</div>
